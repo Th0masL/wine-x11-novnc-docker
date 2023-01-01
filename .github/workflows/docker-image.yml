@@ -18,6 +18,11 @@ jobs:
 
     - uses: actions/checkout@v3
 
+    - name: Show informations about this GitHub Event
+      run: echo "$GIT_JSON_DATA"
+      env:
+        GIT_JSON_DATA: ${{ toJson(github) }}
+
     - name: "[PUSH] Detect Variables"
       if: ${{ github.event_name == 'push' && github.ref_type != 'tag' }}
       run: |
